@@ -14,13 +14,18 @@ namespace MoodAnalyserApp
         }
         public string AnalyseMood()
         {
-            string mood;
-            if (message == "I am in a Happy mood")
+            string mood = "";
+            try
+            {
+                if (message == "I am in a Happy mood")
+                    mood = "Happy";
+                if (message == "I am in a Sad mood")
+                    mood = "Sad";
+            }
+            catch (Exception e)
+            {
                 mood = "Happy";
-            else if (message == "I am in a Sad mood")
-                mood = "Sad";
-            else
-                mood = null;
+            }
             return mood;
         }
     }
