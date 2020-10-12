@@ -15,25 +15,13 @@ namespace MoodAnalyserApp
         public string AnalyseMood()
         {
             string mood;
-            if (message != null)
+            try
             {
-                if (message == "I am in a Happy mood")
-                    mood = "Happy";
-                else if (message == "I am in a Sad mood")
-                    mood = "Sad";
-                else
-                    mood = "";
+                mood = this.message.Contains("Sad") || this.message.Contains("sad") ? "Sad" : "Happy";
             }
-            else
+            catch
             {
-                try
-                {
-                    throw new Exception();
-                }
-                catch (Exception e)
-                {
-                    mood = "Happy";
-                }
+                mood = "Happy";
             }
             return mood;
         }
