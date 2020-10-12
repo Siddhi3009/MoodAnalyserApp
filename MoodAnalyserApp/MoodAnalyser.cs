@@ -18,10 +18,14 @@ namespace MoodAnalyserApp
             try
             {
                 mood = this.message.Contains("Sad") || this.message.Contains("sad") ? "Sad" : "Happy";
+                if (this.message.Equals(string.Empty))
+                {
+                    throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.EMPTY_MESSAGE, "Mood should not be empty");
+                }
             }
-            catch
+            catch (NullReferenceException)
             {
-                mood = "Happy";
+                throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NULL_MESSAGE, "Mood should not be null");
             }
             return mood;
         }
