@@ -11,8 +11,8 @@ namespace MoodAnalyserApp
     {
         public static object MoodAnalyseObjectCreation(string className, string constructorName)
         {
-            string name = @"." + constructorName + "$";
-            bool result = Regex.IsMatch(name, className);
+            string name = ".*" + constructorName + "$";
+            bool result = Regex.IsMatch(className, name);
             if (result)
             {
                 try

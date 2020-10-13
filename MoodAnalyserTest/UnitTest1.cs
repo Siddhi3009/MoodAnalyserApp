@@ -53,5 +53,39 @@ namespace MoodAnalyserTest
                 Assert.AreEqual("Mood should not be null", e.Message);
             }
         }
+        [TestMethod]
+        public void Given_MoodAnalyserClassName_Should_ReturnMoodAnalyserObject()
+        {
+            object expected = new MoodAnalyser();
+            object actual = MoodAnalyserFactory.MoodAnalyseObjectCreation("MoodAnalyserApp.MoodAnalyser" , "MoodAnalyser");
+            expected.Equals(actual);
+            //Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Given_ImproperClassName_Should_Throw_MoodAnalysisException_NO_SUCH_CLASS()
+        {
+            try
+            {
+                object expected = new MoodAnalyser();
+                object actual = MoodAnalyserFactory.MoodAnalyseObjectCreation("abc", "abc");
+            }
+            catch(MoodAnalyserCustomException e)
+            {
+                Assert.AreEqual("No such class found", e.Message);
+            }
+        }
+        [TestMethod]
+        public void Given_ImproperConstructorName_Should_Throw_MoodAnalysisException_NO_SUCH_METHOD()
+        {
+            try
+            {
+                object expected = new MoodAnalyser();
+                object actual = MoodAnalyserFactory.MoodAnalyseObjectCreation("Mood", "MoodAnalyser");
+            }
+            catch (MoodAnalyserCustomException e)
+            {
+                Assert.AreEqual("Constructor not found", e.Message);
+            }
+        }
     }
 }
