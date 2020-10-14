@@ -6,7 +6,7 @@ namespace MoodAnalyserTest
     public class UnitTest1
     {
         [TestMethod]
-        public void Given_Sad_Mood_Should_Return_Sad()
+        public void GivenSadMood_ShouldReturn_SadMood()
         {
             //Arrange
             MoodAnalyser analyser = new MoodAnalyser("I am in a Sad mood");
@@ -16,7 +16,7 @@ namespace MoodAnalyserTest
             Assert.AreEqual("Sad", mood);
         }
         [TestMethod]
-        public void Given_Any_Mood_Should_Return_Happy()
+        public void GivenAnyMood_ShouldReturn_HappyMood()
         {
             //Arrange
             MoodAnalyser analyser = new MoodAnalyser("I am in a Happy mood");
@@ -26,7 +26,7 @@ namespace MoodAnalyserTest
             Assert.AreEqual("Happy", mood);
         }
         [TestMethod]
-        public void Given_Empty_Mood_Should_Throw_MoodAnalysisException_Indicating_EmptyMood()
+        public void GivenEmptyMood_ShouldThrow_MoodAnalysisExceptionIndicatingEmptyMood()
         {
             try
             {
@@ -40,7 +40,7 @@ namespace MoodAnalyserTest
             }
         }
         [TestMethod]
-        public void Given_NULL_Mood_Should_Throw_MoodAnalysisException()
+        public void GivenNULLMood_ShouldThrow_MoodAnalysisException()
         {
             try
             {
@@ -54,15 +54,15 @@ namespace MoodAnalyserTest
             }
         }
         [TestMethod]
-        public void Given_MoodAnalyserClassName_Should_ReturnMoodAnalyserObject()
+        public void GivenMoodAnalyserClassName_WhenAnalyse_ShouldReturnMoodAnalyserObject()
         {
             object expected = new MoodAnalyser();
             object actual = MoodAnalyserFactory.MoodAnalyseObjectCreation("MoodAnalyserApp.MoodAnalyser" , "MoodAnalyser");
-            expected.Equals(actual);
-            //Assert.AreEqual(expected, actual);
+            //expected.Equals(actual);
+            Assert.AreEqual(expected.GetType(), actual.GetType());
         }
         [TestMethod]
-        public void Given_ImproperClassName_Should_Throw_MoodAnalysisException_NO_SUCH_CLASS()
+        public void GivenImproperClassName_WhenAnalyse_ShouldThrowMoodAnalysisException()
         {
             try
             {
@@ -75,7 +75,7 @@ namespace MoodAnalyserTest
             }
         }
         [TestMethod]
-        public void Given_ImproperConstructorName_Should_Throw_MoodAnalysisException_NO_SUCH_METHOD()
+        public void GivenImproperConstructorName_WhenAnalyse_ShouldThrowMoodAnalysisException()
         {
             try
             {

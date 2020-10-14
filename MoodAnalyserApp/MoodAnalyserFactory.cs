@@ -11,14 +11,14 @@ namespace MoodAnalyserApp
     {
         public static object MoodAnalyseObjectCreation(string className, string constructorName)
         {
-            string name = ".*" + constructorName + "$";
+            string name = @".*" + constructorName + "$";
             bool result = Regex.IsMatch(className, name);
             if (result)
             {
                 try
                 {
-                    //Assembly executing = Assembly.GetExecutingAssembly();
-                    Type moodAnalyseType = Type.GetType(className);
+                    Assembly executing = Assembly.GetExecutingAssembly();
+                    Type moodAnalyseType = executing.GetType(className);
                     return Activator.CreateInstance(moodAnalyseType);
                 }
                 catch (ArgumentNullException)
