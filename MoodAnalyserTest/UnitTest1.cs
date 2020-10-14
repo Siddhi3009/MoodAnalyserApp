@@ -58,7 +58,6 @@ namespace MoodAnalyserTest
         {
             object expected = new MoodAnalyser();
             object actual = MoodAnalyserFactory.MoodAnalyseObjectCreation("MoodAnalyserApp.MoodAnalyser" , "MoodAnalyser");
-            //expected.Equals(actual);
             Assert.AreEqual(expected.GetType(), actual.GetType());
         }
         [TestMethod]
@@ -69,7 +68,7 @@ namespace MoodAnalyserTest
                 object expected = new MoodAnalyser();
                 object actual = MoodAnalyserFactory.MoodAnalyseObjectCreation("abc", "abc");
             }
-            catch(MoodAnalyserCustomException e)
+            catch (MoodAnalyserCustomException e)
             {
                 Assert.AreEqual("No such class found", e.Message);
             }
