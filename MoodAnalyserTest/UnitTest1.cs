@@ -6,7 +6,7 @@ namespace MoodAnalyserTest
     public class UnitTest1
     {
         [TestMethod]
-        public void MoodAnalyser_Should_Return_Sad()
+        public void GivenSadMessage_ShouldReturn_SadMood()
         {
             //Arrange
             MoodAnalyser analyser = new MoodAnalyser("I am in a Sad mood");
@@ -16,7 +16,7 @@ namespace MoodAnalyserTest
             Assert.AreEqual("Sad", mood);
         }
         [TestMethod]
-        public void MoodAnalyser_Should_Return_Happy()
+        public void GivenHappyMessage_ShouldReturn_HappyMood()
         {
             //Arrange
             MoodAnalyser analyser = new MoodAnalyser("I am in a Happy mood");
