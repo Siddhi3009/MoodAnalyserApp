@@ -145,5 +145,37 @@ namespace MoodAnalyserTest
                 Assert.AreEqual("No such method found", e.Message);
             }
         }
+        [TestMethod]
+        public void GivenHappyMessage_WithReflector_ShouldReturnHappyMood()
+        {
+            string expected = "Happy";
+            string result = MoodAnalyserReflector.SetField("Happy", "message");
+            Assert.AreEqual(expected, result);
+        }
+        [TestMethod]
+        public void GivenImproperField_ShouldThrowMoodAnalyserCustomException()
+        {
+            try
+            {
+                string result = MoodAnalyserReflector.SetField("Happy", "msg");
+            }
+            catch (MoodAnalyserCustomException e)
+            {
+                Assert.AreEqual("Field not found", e.Message);
+            }
+        }
+        [TestMethod]
+        public void GivenNullMessage_ShouldThrowMoodAnalyserCustomException()
+        {
+            try
+            {
+                string message = null;
+                string result = MoodAnalyserReflector.SetField(message , "message");
+            }
+            catch (MoodAnalyserCustomException e)
+            {
+                Assert.AreEqual("Message cannot be null", e.Message);
+            }
+        }
     }
 }
