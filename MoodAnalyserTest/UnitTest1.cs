@@ -58,11 +58,11 @@ namespace MoodAnalyserTest
         {
             object expected = new MoodAnalyser();
             object actual = MoodAnalyserFactory.MoodAnalyseObjectCreation("MoodAnalyserApp.MoodAnalyser" , "MoodAnalyser");
-            expected.Equals(actual);
-            //Assert.AreEqual(expected, actual);
+            //expected.Equals(actual);
+            Assert.AreEqual(expected.GetType(), actual.GetType());
         }
         [TestMethod]
-        public void GivenImproperClassName_WhenAnalysed_ShouldThrow_MoodAnalysisExceptionNOSUCHCLASS()
+        public void GivenImproperClassName_WhenAnalyse_ShouldThrowMoodAnalysisException()
         {
             try
             {
@@ -75,7 +75,7 @@ namespace MoodAnalyserTest
             }
         }
         [TestMethod]
-        public void GivenImproperConstructorName_WhenAnalysed_ShouldThrow_MoodAnalysisExceptionNOSUCHMETHOD()
+        public void GivenImproperConstructorName_WhenAnalyse_ShouldThrowMoodAnalysisException()
         {
             try
             {
